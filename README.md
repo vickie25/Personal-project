@@ -1,18 +1,60 @@
-# React + Vite
+# Personal Project Showcase App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React dashboard for adding, searching, and reviewing personal project entries. This app is built with Vite and React, and includes Jest plus React Testing Library for component-level tests.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new project cards with title and description
+- Search projects by title or description
+- Responsive layout for desktop and mobile
+- Clear component tree with reusable child components
+- Unit tests for form submission and search behavior
 
-## React Compiler
+## Component Tree
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- `App`
+  - `Header`
+  - `ProjectForm`
+  - `SearchBar`
+  - `ProjectList`
+    - `ProjectCard`
 
-Note: This will impact Vite dev & build performances.
+## State and Props
 
-## Expanding the ESLint configuration
+- `App` holds central state via `useProjects`
+  - `projects`
+  - `searchTerm`
+  - `filteredProjects`
+- `ProjectForm` manages local input state and lifts new project data to `App`
+- `SearchBar` receives `searchTerm` and `onChange` from `App`
+- `ProjectList` receives filtered project data and renders `ProjectCard` components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Setup
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Start the development server
+
+```bash
+npm run dev
+```
+
+3. Open the app in your browser at the address shown in the terminal
+
+## Testing
+
+Run unit tests with:
+
+```bash
+npm test
+```
+
+## Notes
+
+- The app uses `useState` and `useMemo` for local state and derived data.
+- Styling is implemented with modern CSS and responsive grid layout.
+- Jest is configured with Babel to support JSX and CSS imports in tests.
